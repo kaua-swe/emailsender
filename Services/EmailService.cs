@@ -42,6 +42,7 @@ namespace emailsender.Services
                     _settings.Usuario,
                     _settings.Senha
                 );
+                email.Body = body.ToMessageBody();
                 await smtp.SendAsync(email);
                 await smtp.DisconnectAsync(true);
                 return new EmailResult
